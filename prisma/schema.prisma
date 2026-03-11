@@ -1,0 +1,135 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  role      String   // ADMIN, SELLER, BUYER
+  username  String?  @unique
+  password  String
+  name      String?
+  phone     String?
+  address   String?
+  email     String?
+  
+  // Relations
+  shop      Shop?
+  orders    Order[]
+  reviews   Review[]
+  sentMessages     Message[] @relation("SentMessages")
+  receivedMessages Message[] @relation("ReceivedMessages")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Message {
+  id          String   @id @default(cuid())
+  senderId    String
+  sender      User     @relation("SentMessages", fields: [senderId], references: [id])
+  receiverId  String
+  receiver    User     @relation("ReceivedMessages", fields: [receiverId], references: [id])
+  content     String
+  isRead      Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model Shop {
+  id            String   @id @default(cuid())
+  userId        String   @unique
+  user          User     @relation(fields: [userId], references: [id])
+  name          String
+  address       String
+  phone         String
+  whatsapp      String?
+  isOpen        Boolean  @default(false)
+  openTime      String?
+  closeTime     String?
+  status        String   @default("PENDING") // PENDING, APPROVED, REJECTED
+  
+  brands        String   // "LAUGFS", "LITRO", "BOTH"
+  
+  stocks        ShopStock[]
+  orders        Order[]
+  reviews       Review[]
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model GasItem {
+  id          String   @id @default(cuid())
+  brand       String   // LAUGFS, LITRO
+  weight      String   // 12.5kg, 5kg, 2.3kg
+  price       Float
+  imageUrl    String?
+  
+  stocks      ShopStock[]
+  orderItems  OrderItem[]
+}
+
+model ShopStock {
+  id          String   @id @default(cuid())
+  shopId      String
+  shop        Shop     @relation(fields: [shopId], references: [id])
+  gasItemId   String
+  gasItem     GasItem  @relation(fields: [gasItemId], references: [id])
+  quantity    Int      @default(0)
+  
+  @@unique([shopId, gasItemId])
+}
+
+model Order {
+  id             String   @id @default(cuid())
+  buyerId        String
+  buyer          User     @relation(fields: [buyerId], references: [id])
+  shopId         String
+  shop           Shop     @relation(fields: [shopId], references: [id])
+  
+  status         String   @default("PENDING") // PENDING, ACCEPTED, DELIVERED, CANCELLED
+  isDelivery     Boolean  @default(false)
+  deliveryFee    Float    @default(0)
+  deliveryLat    Float?
+  deliveryLng    Float?
+  
+  totalAmount    Float
+  
+  items          OrderItem[]
+  
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model OrderItem {
+  id          String   @id @default(cuid())
+  orderId     String
+  order       Order    @relation(fields: [orderId], references: [id])
+  gasItemId   String
+  gasItem     GasItem  @relation(fields: [gasItemId], references: [id])
+  quantity    Int
+  priceAtTime Float
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  shopId    String
+  shop      Shop     @relation(fields: [shopId], references: [id])
+  buyerId   String
+  buyer     User     @relation(fields: [buyerId], references: [id])
+  rating    Int      @default(5)
+  comment   String?
+  
+  createdAt DateTime @default(now())
+}
+
+model Settings {
+  id              String   @id @default(cuid())
+  adminWhatsapp   String
+}
