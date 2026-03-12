@@ -179,7 +179,7 @@ export default function ShopList({ brand }: { brand: "LAUGFS" | "LITRO" }) {
                           </a>
                        )}
                        <Link 
-                          href={`/shops/${shop.id}`}
+                          href={`/shops/${shop.id}?brand=${brand}`}
                           className={`px-4 py-2 rounded-md font-bold transition-colors ${theme.buttonClass}`}
                        >
                           View & Buy

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { Flame, Droplet, MapPin, Clock, Phone, Map, Navigation } from "lucide-react";
@@ -18,10 +18,14 @@ type Shop = {
 
 export default function ShopDetailsPage() {
   const { id } = useParams();
+  const searchParams = useSearchParams();
+  const brandFilter = searchParams.get("brand");
+  
   const { data: session } = useSession();
   const router = useRouter();
   
   const [shop, setShop] = useState<Shop | null>(null);
+  const [filteredStocks, setFilteredStocks] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   
   // Cart/Order state
@@ -38,9 +42,16 @@ export default function ShopDetailsPage() {
       .then(res => res.json())
       .then(data => {
         setShop(data);
+        if (data.stocks) {
+           if (brandFilter) {
+              setFilteredStocks(data.stocks.filter((s: any) => s.gasItem.brand === brandFilter));
+           } else {
+              setFilteredStocks(data.stocks);
+           }
+        }
         setLoading(false);
       });
-  }, [id]);
+  }, [id, brandFilter]);
 
   if (loading) return <div className="p-10 text-center">Loading shop details...</div>;
   if (!shop) return <div className="p-10 text-center">Shop not found</div>;
@@ -60,7 +71,7 @@ export default function ShopDetailsPage() {
 
   const calculateTotal = () => {
     let total = 0;
-    shop.stocks.forEach(stock => {
+    filteredStocks.forEach(stock => {
       const q = cart[stock.gasItem.id] || 0;
       total += q * stock.gasItem.price;
     });
@@ -130,7 +141,7 @@ export default function ShopDetailsPage() {
               </h2>
               
               <div className="space-y-4">
-                 {shop.stocks.map(stock => {
+                 {filteredStocks.map(stock => {
                     const item = stock.gasItem;
                     const q = cart[item.id] || 0;
                     return (
@@ -150,7 +161,7 @@ export default function ShopDetailsPage() {
                                 className="w-8 h-8 flex items-center justify-center rounded bg-gray-100 font-bold hover:bg-gray-200 active:bg-gray-300 text-gray-700 disabled:opacity-50"
                                 disabled={q <= 0}
                              >-</button>
-                             <span className="w-8 text-center font-bold">{q}</span>
+                             <span className="w-8 text-center font-bold text-gray-900">{q}</span>
                              <button 
                                 onClick={() => handleQuantity(item.id, 1, stock.quantity)}
                                 className="w-8 h-8 flex items-center justify-center rounded bg-gray-100 font-bold hover:bg-gray-200 active:bg-gray-300 text-gray-700 disabled:opacity-50"
@@ -160,7 +171,7 @@ export default function ShopDetailsPage() {
                        </div>
                     );
                  })}
-                 {shop.stocks.length === 0 && <p className="text-gray-500">No stock available currently.</p>}
+                 {filteredStocks.length === 0 && <p className="text-gray-500">No stock available matching this brand.</p>}
               </div>
            </div>
 
@@ -232,7 +243,7 @@ export default function ShopDetailsPage() {
               <h2 className="text-xl font-bold mb-4 border-b pb-4 text-gray-900">Order Summary</h2>
               
               <div className="space-y-3 mb-6">
-                 {shop.stocks.map(stock => {
+                 {filteredStocks.map(stock => {
                     const item = stock.gasItem;
                     const q = cart[item.id];
                     if (!q) return null;
