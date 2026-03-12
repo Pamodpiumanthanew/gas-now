@@ -120,66 +120,66 @@ function BuyerRegistrationForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 bg-white py-8 px-6 shadow rounded-lg">
+    <form onSubmit={handleSubmit} className="space-y-6 bg-white py-8 px-6 shadow rounded-lg text-black">
       {error && (
         <div className="bg-red-50 text-red-700 p-3 rounded text-sm">{error}</div>
       )}
       <div>
-        <label className="block text-sm font-medium text-black-700">Username</label>
+        <label className="block text-sm font-medium text-gray-700">Username</label>
         <input
           type="text"
           required
           value={formData.username}
           onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-          className="mt-1 block w-full px-3 py-2 border border-black-300 rounded-md"
+          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
         />
       </div>
       <div>
-        <label className="block text-sm font-medium text-black-700">Password</label>
+        <label className="block text-sm font-medium text-gray-700">Password</label>
         <input
           type="password"
           required
           value={formData.password}
           onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-          className="mt-1 block w-full px-3 py-2 border border-black-300 rounded-md"
+          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
         />
       </div>
       <div>
-        <label className="block text-sm font-medium text-black-700">Name</label>
+        <label className="block text-sm font-medium text-gray-700">Name</label>
         <input
           type="text"
           required
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className="mt-1 block w-full px-3 py-2 border border-black-300 rounded-md"
+          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
         />
       </div>
       <div>
-        <label className="block text-sm font-medium text-black-700">Phone Number</label>
+        <label className="block text-sm font-medium text-gray-700">Phone Number</label>
         <input
           type="text"
           required
           value={formData.phone}
           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-          className="mt-1 block w-full px-3 py-2 border border-black-300 rounded-md"
+          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
         />
       </div>
       <div>
-        <label className="block text-sm font-medium text-black-700">Email Address (Optional)</label>
+        <label className="block text-sm font-medium text-gray-700">Email Address (Optional)</label>
         <input
           type="email"
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          className="mt-1 block w-full px-3 py-2 border border-black-300 rounded-md"
+          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
         />
       </div>
       <div>
-        <label className="block text-sm font-medium text-black-700">Address</label>
+        <label className="block text-sm font-medium text-gray-700">Address</label>
         <textarea
           required
           value={formData.address}
           onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-          className="mt-1 block w-full px-3 py-2 border border-black-300 rounded-md"
+          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
         />
       </div>
       <button
@@ -244,7 +244,7 @@ function SellerRegistrationForm({ adminWhatsapp }: { adminWhatsapp: string }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 bg-white py-8 px-6 shadow rounded-lg mb-10">
+    <form onSubmit={handleSubmit} className="space-y-6 bg-white py-8 px-6 shadow rounded-lg mb-10 text-black">
       {error && (
         <div className="bg-red-50 text-red-700 p-3 rounded text-sm">{error}</div>
       )}

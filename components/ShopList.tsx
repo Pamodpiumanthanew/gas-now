@@ -175,7 +175,7 @@ export default function ShopList({ brand }: { brand: "LAUGFS" | "LITRO" }) {
                             className="flex items-center text-sm font-medium text-[#25D366] hover:text-[#128C7E]"
                           >
                              <MessageCircle className="h-5 w-5 mr-1" />
-                             Chat Form
+                             Chat on WhatsApp
                           </a>
                        )}
                        <Link 
