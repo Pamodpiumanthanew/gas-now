@@ -110,7 +110,7 @@ export default function LoginPage() {
               </div>
               <div className="relative flex justify-center text-sm">
                 <span className="px-2 bg-white text-gray-500">
-                  Don't have an account? Register below
+                  New to Gas Now?
                 </span>
               </div>
             </div>
@@ -120,7 +120,7 @@ export default function LoginPage() {
                 href="/register"
                 className="font-medium text-orange-600 hover:text-orange-500"
               >
-                Register
+                Create an Account
               </Link>
             </div>
           </div>

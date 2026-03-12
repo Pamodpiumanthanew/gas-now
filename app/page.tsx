@@ -79,8 +79,8 @@ export default function HomePage() {
             <div className="relative rounded-2xl border-4 border-transparent hover:border-yellow-400 bg-black overflow-hidden shadow-xl transition-all duration-300 transform hover:-translate-y-2">
               <div className="absolute inset-0 opacity-20 bg-gradient-to-br from-yellow-400 to-transparent"></div>
               <div className="p-10 flex flex-col items-center justify-center min-h-[300px] relative z-10 text-center">
-                 <div className="bg-yellow-400 p-4 rounded-full mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Flame className="h-16 w-16 text-black" />
+                 <div className="bg-white p-2 rounded-full mb-6 group-hover:scale-110 transition-transform duration-300 h-24 w-24 flex items-center justify-center shadow-lg overflow-hidden">
+                    <img src="/laugf.jpeg" alt="Laugfs Gas Logo" className="h-full w-full object-contain rounded-full" />
                  </div>
                  <h2 className="text-4xl font-black text-yellow-400 tracking-wider">LAUGFS GAS</h2>
                  <p className="mt-4 text-gray-300 font-medium">Explore yellow cylinders and authorized dealers</p>
@@ -97,8 +97,8 @@ export default function HomePage() {
             <div className="relative rounded-2xl border-4 border-transparent hover:border-blue-400 bg-white overflow-hidden shadow-xl transition-all duration-300 transform hover:-translate-y-2">
               <div className="absolute inset-0 opacity-10 bg-gradient-to-br from-blue-600 to-transparent"></div>
               <div className="p-10 flex flex-col items-center justify-center min-h-[300px] relative z-10 text-center">
-                 <div className="bg-blue-600 p-4 rounded-full mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <Droplet className="h-16 w-16 text-white" />
+                 <div className="bg-white p-2 rounded-full mb-6 group-hover:scale-110 transition-transform duration-300 h-24 w-24 flex items-center justify-center shadow-lg overflow-hidden">
+                    <img src="/litro.png" alt="Litro Gas Logo" className="h-full w-full object-contain rounded-full" />
                  </div>
                  <h2 className="text-4xl font-black text-blue-800 tracking-wider">LITRO GAS</h2>
                  <p className="mt-4 text-gray-600 font-medium">Explore blue cylinders and authorized dealers</p>
