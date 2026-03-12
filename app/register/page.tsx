@@ -29,7 +29,7 @@ export default function RegisterPage() {
           <div className="mx-auto flex justify-center items-center mt-2 mb-4">
             <img src="/logoo.jpeg" alt="Gas Now Logo" className="h-16 w-auto" />
           </div>
-          <h2 className="text-3xl font-extrabold text-gray-900 mb-8">
+          <h2 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-blue-600 mb-8">
             Join Gas Now
           </h2>
           <div className="grid grid-cols-1 gap-4">

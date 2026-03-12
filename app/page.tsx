@@ -16,7 +16,7 @@ export default function HomePage() {
             <div className="flex items-center space-x-2">
               <div className="flex items-center space-x-3">
                <img src="/logoo.jpeg" alt="Gas Now Logo" className="h-10 w-auto rounded-md" />
-               <h1 className="text-2xl font-bold tracking-tight">Gas Now</h1>
+               <h1 className="text-2xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-blue-600">Gas Now</h1>
             </div>
             </div>
             <div className="flex items-center space-x-4">

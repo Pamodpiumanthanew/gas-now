@@ -36,7 +36,7 @@ export default function LoginPage() {
         <div className="mx-auto flex justify-center items-center mt-2 mb-4">
           <img src="/logoo.jpeg" alt="Gas Now Logo" className="h-16 w-auto" />
         </div>
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        <h2 className="mt-6 text-center text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-blue-600">
           Sign in to Gas Now
         </h2>
       </div>
