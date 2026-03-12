@@ -125,61 +125,61 @@ function BuyerRegistrationForm() {
         <div className="bg-red-50 text-red-700 p-3 rounded text-sm">{error}</div>
       )}
       <div>
-        <label className="block text-sm font-medium text-gray-700">Username</label>
+        <label className="block text-sm font-medium text-black-700">Username</label>
         <input
           type="text"
           required
           value={formData.username}
           onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
+          className="mt-1 block w-full px-3 py-2 border border-black-300 rounded-md"
         />
       </div>
       <div>
-        <label className="block text-sm font-medium text-gray-700">Password</label>
+        <label className="block text-sm font-medium text-black-700">Password</label>
         <input
           type="password"
           required
           value={formData.password}
           onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
+          className="mt-1 block w-full px-3 py-2 border border-black-300 rounded-md"
         />
       </div>
       <div>
-        <label className="block text-sm font-medium text-gray-700">Name</label>
+        <label className="block text-sm font-medium text-black-700">Name</label>
         <input
           type="text"
           required
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
+          className="mt-1 block w-full px-3 py-2 border border-black-300 rounded-md"
         />
       </div>
       <div>
-        <label className="block text-sm font-medium text-gray-700">Phone Number</label>
+        <label className="block text-sm font-medium text-black-700">Phone Number</label>
         <input
           type="text"
           required
           value={formData.phone}
           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
+          className="mt-1 block w-full px-3 py-2 border border-black-300 rounded-md"
         />
       </div>
       <div>
-        <label className="block text-sm font-medium text-gray-700">Email Address (Optional)</label>
+        <label className="block text-sm font-medium text-black-700">Email Address (Optional)</label>
         <input
           type="email"
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
+          className="mt-1 block w-full px-3 py-2 border border-black-300 rounded-md"
         />
       </div>
       <div>
-        <label className="block text-sm font-medium text-gray-700">Address</label>
+        <label className="block text-sm font-medium text-black-700">Address</label>
         <textarea
           required
           value={formData.address}
           onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-          className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
+          className="mt-1 block w-full px-3 py-2 border border-black-300 rounded-md"
         />
       </div>
       <button
@@ -225,9 +225,9 @@ function SellerRegistrationForm({ adminWhatsapp }: { adminWhatsapp: string }) {
 
       // Redirect to WhatsApp assuming payment
       if (adminWhatsapp) {
-         window.location.href = `https://wa.me/${adminWhatsapp}?text=Hi Admin, I have registered a new seller account for '${formData.shopName}'. Please accept my request after payment processing.`;
+        window.location.href = `https://wa.me/${adminWhatsapp}?text=Hi Admin, I have registered a new seller account for '${formData.shopName}'. Please accept my request after payment processing.`;
       } else {
-         router.push("/login?pending=true");
+        router.push("/login?pending=true");
       }
     } catch (err: any) {
       setError(err.message);
@@ -298,7 +298,7 @@ function SellerRegistrationForm({ adminWhatsapp }: { adminWhatsapp: string }) {
           className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
         />
       </div>
-      
+
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">Brands Available</label>
         <select
@@ -330,9 +330,9 @@ function SellerRegistrationForm({ adminWhatsapp }: { adminWhatsapp: string }) {
       </div>
 
       <div className="pt-4">
-         <p className="text-sm text-gray-500 mb-4 text-center">
-            After registering, you will be redirected to WhatsApp to contact the Admin for payment and verification.
-         </p>
+        <p className="text-sm text-gray-500 mb-4 text-center">
+          After registering, you will be redirected to WhatsApp to contact the Admin for payment and verification.
+        </p>
         <button
           type="submit"
           className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#25D366] hover:bg-[#128C7E]"
